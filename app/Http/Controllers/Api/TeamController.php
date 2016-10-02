@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Team;
 
 class TeamController extends Controller
 {
@@ -16,7 +17,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        return Team::all();
     }
 
     /**
@@ -48,7 +49,7 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        //
+        return Team::find($id);
     }
 
     /**

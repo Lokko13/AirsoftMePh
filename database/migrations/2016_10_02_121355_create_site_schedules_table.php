@@ -17,7 +17,7 @@ class CreateSiteSchedulesTable extends Migration
             $table->increments('id');
             $table->date('game_schedule');
             $table->integer('site_id')->unsigned();
-            $table->foreign('site_id')->referenes('id')->on('sites')->onDelete('cascade');
+            $table->foreign('site_id')->references('id')->on('airsoft_sites')->onDelete('cascade');
         });
     }
 

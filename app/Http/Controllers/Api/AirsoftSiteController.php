@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\AirsoftSite;
 
 class AirsoftSiteController extends Controller
 {
@@ -16,7 +17,7 @@ class AirsoftSiteController extends Controller
      */
     public function index()
     {
-        //
+        return AirsoftSite::all();
     }
 
     /**
@@ -48,7 +49,7 @@ class AirsoftSiteController extends Controller
      */
     public function show($id)
     {
-        //
+        return AirsoftSite::find($id);
     }
 
     /**

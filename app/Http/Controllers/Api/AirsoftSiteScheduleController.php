@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\AirsoftSite;
 
-class AirsoftSiteScheduleControllerr extends Controller
+class AirsoftSiteScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($site_id)
     {
-        //
+        return AirsoftSite::find($site_id)->schedules()->get();
+
     }
 
     /**
@@ -46,9 +48,9 @@ class AirsoftSiteScheduleControllerr extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($site_id, $id)
     {
-        //
+        return AirsoftSite::find($site_id)->schedules()->where('id', $id)->get();
     }
 
     /**
