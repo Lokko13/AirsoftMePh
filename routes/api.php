@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::resource('sites', 'Api\AirsoftSiteController');
+Route::resource('sites.schedule', 'Api\AirsoftSiteScheduleController');
+Route::resource('teams', 'Api\TeamController');
