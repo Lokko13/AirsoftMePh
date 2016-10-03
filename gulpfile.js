@@ -2,6 +2,8 @@ const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue');
 
+elixir.extend('sourcemaps', false);
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
