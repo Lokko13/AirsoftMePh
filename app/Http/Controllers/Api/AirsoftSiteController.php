@@ -38,7 +38,27 @@ class AirsoftSiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $site = new AirsoftSite;
+        $site->name = $request->name;
+        $site->longitude = $request->longitude;
+        $site->latitude = $request->latitude;
+        $site->game_fee = $request->game_fee;
+        $site->host_id = $request->host_id;
+        $site->save();
+
+        if($site !== null){
+            return array(
+                'status_code' => '200',
+                'message' => 'Airsoft Site saved with Id:' . $site->id,
+                'data' => $site
+            );
+        }
+        else{
+            return array(
+                'status_code' => '500',
+                'message' => 'Internal Server Error'
+            );
+        }
     }
 
     /**
@@ -49,7 +69,17 @@ class AirsoftSiteController extends Controller
      */
     public function show($id)
     {
-        return AirsoftSite::find($id);
+        $site = AirsoftSite::find($id);
+
+        if($site !== null){
+            return $site;
+        }
+        else{
+            return array(
+                'status_code' => '404',
+                'message' => 'Not Found'
+            );
+        }
     }
 
     /**
@@ -71,8 +101,29 @@ class AirsoftSiteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $site = AirsoftSite::find($id);
+
+        if($site !== null){
+            $site->name = isset($request->name)? $request->name : $site->name;
+            $site->longitude = isset($request->longitude)? $request->longitude : $site->longitude;
+            $site->latitude = isset($request->latitude)? $request->latitude : $site->latitude;
+            $site->game_fee = isset($request->game_fee)? $request->game_fee : $site->game_fee;
+            $site->host_id = isset($request->host_id)? $request->host_id : $site->host_id;
+            $site->save();
+            
+            return array(
+                'status_code' => '200',
+                'message' => 'Airsoft Site with Id:' . $site->id . ' has been updated',
+                'data' => $site
+            );
+        }
+        else{
+            return array(
+                'status_code' => '404',
+                'message' => 'Not Found'
+            );
+        }
     }
 
     /**
@@ -83,6 +134,20 @@ class AirsoftSiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $site = AirsoftSite::find($id);
+
+        if($site !== null){
+            $site->delete();
+            return array(
+                'status_code' => '200',
+                'message' => 'Airsoft Site with Id:' . $site->id . ' has been deleted'
+            );
+        }
+        else{
+            return array(
+                'status_code' => '404',
+                'message' => 'Not Found'
+            );
+        }
     }
 }

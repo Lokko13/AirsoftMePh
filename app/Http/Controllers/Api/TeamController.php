@@ -38,7 +38,23 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $team = new Team;
+        $team->name = $request->name;
+        $team->save();
+
+        if($team !== null){
+            return array(
+                'status_code' => '200',
+                'message' => 'Team saved with Id:' . $team->id,
+                'data' => $team
+            );
+        }
+        else{
+            return array(
+                'status_code' => '500',
+                'message' => 'Internal Server Error'
+            );
+        }
     }
 
     /**
@@ -49,7 +65,17 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        return Team::find($id);
+        $team = Team::find($id);
+
+        if($team !== null){
+            return $team;
+        }
+        else{
+            return array(
+                'status_code' => '404',
+                'message' => 'Not Found'
+            );
+        }
     }
 
     /**
@@ -72,7 +98,24 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $team = Team::find($id);
+
+        if($team !== null){
+            $team->name = isset($request->name)? $request->name : $team->name;
+            $team->save();
+
+            return array(
+                'status_code' => '200',
+                'message' => 'Team with Id:' . $team->id . ' has been updated',
+                'data' => $team
+            );
+        }
+        else{
+            return array(
+                'status_code' => '404',
+                'message' => 'Not Found'
+            );
+        }
     }
 
     /**
@@ -83,6 +126,20 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::find($id);
+
+        if($team !== null){
+            $team->delete();
+            return array(
+                'status_code' => '200',
+                'message' => 'Team with Id:' . $team->id . ' has been deleted'
+            );
+        }
+        else{
+            return array(
+                'status_code' => '404',
+                'message' => 'Not Found'
+            );
+        }
     }
 }
