@@ -10,8 +10,13 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <!-- Scripts -->
+        <script type="text/javascript" src="{{ elixir('js/app.js') }} "></script>
+        <script type="text/javascript" src="{{ elixir('js/all.js') }}"></script>
+
         <!-- Styles -->
-        <link href="#" rel="stylesheet" type="text/css">
+        <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ elixir('css/all.css') }}" rel="stylesheet" type="text/css">
         @yield('styles')
         
     </head>

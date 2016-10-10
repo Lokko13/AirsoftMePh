@@ -1,8 +1,8 @@
 const elixir = require('laravel-elixir');
-
+const bowerDir = '../../../vendor/bower_components/'
 require('laravel-elixir-vue');
 
-elixir.extend('sourcemaps', false);
+elixir.configsourcemaps = false;
 
 /*
  |--------------------------------------------------------------------------
@@ -17,5 +17,12 @@ elixir.extend('sourcemaps', false);
 
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .webpack('app.js')
+       .scripts([
+       		bowerDir + 'moment/min/moment.min.js',
+       		bowerDir + 'fullcalendar/dist/fullcalendar.min.js',
+       	])
+       .styles([
+       		bowerDir + 'fullcalendar/dist/fullcalendar.min.css',
+       	]);
 });
