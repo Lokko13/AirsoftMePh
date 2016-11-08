@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Sentinel;
 
 class AuthController extends Controller
 {
@@ -21,6 +22,13 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
+
+        $credentials = [
+            'username'    => $request->username,
+            'password' => $request->password,
+        ];
+
+        dd(Sentinel::authenticate($credentials));
     }
 
     public function postRegister(Request $request){
@@ -32,6 +40,16 @@ class AuthController extends Controller
             'first_name' => 'required',
             'last_name' => 'required'
         ]);
+
+        $credentials = [
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'first_name' => $request->first_name, 
+            'last_name' => $request->last_name,
+        ];
+
+        Sentinel::register($credentials);
     }
 
     public function facebookAuth(){
