@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 //use Illuminate\Foundation\Auth\User as Authenticatable;
-use Cartalyst\Sentinel\Users\EloquentUser;
+use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 
 //class User extends Authenticatable
-class User extends EloquentUser
+class User extends SentinelUser
 {
     use Notifiable;
 
@@ -20,4 +20,5 @@ class User extends EloquentUser
         'username', 'email', 'password', 'first_name', 'last_name',
     ];
 
+    protected $loginNames = ['email', 'username'];
 }

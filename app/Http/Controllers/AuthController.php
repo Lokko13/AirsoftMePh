@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Http\Requests\LoginFormRequest;
+use App\Http\Requests\RegisterFormRequest;
 use Sentinel;
 
 class AuthController extends Controller
@@ -17,29 +17,26 @@ class AuthController extends Controller
     	return view('auth.register');
     }
 
-    public function postLogin(Request $request){
-        $this->validate($request, [
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+    public function postLogin(LoginFormRequest $request){
 
         $credentials = [
-            'username'    => $request->username,
-            'password' => $request->password,
+            'login' => $request->username,
+            'password' => $request->password
         ];
 
-        dd(Sentinel::authenticate($credentials));
+        try {
+            if (Sentinel::authenticate($credentials, $request->has('remember'))) {
+                return "authenticated";
+            }
+            return redirect()->back()->withInput()->withErrorMessage('Invalid credentials provided');
+        } catch (\Cartalyst\Sentinel\Checkpoints\NotActivatedException $e) {
+            return redirect()->back()->withInput()->withErrorMessage('User Not Activated.');
+        } catch (\Cartalyst\Sentinel\Checkpoints\ThrottlingException $e) {
+            return redirect()->back()->withInput()->withErrorMessage($e->getMessage());
+        }
     }
 
     public function postRegister(Request $request){
-        $this->validate($request, [
-            'username' => 'required|max:255|min:6|unique:users',
-            'email' => 'required|max:255|email|unique:users',
-            'password' => 'required|max:255|min:6',
-            'password2' => 'same:password',
-            'first_name' => 'required',
-            'last_name' => 'required'
-        ]);
 
         $credentials = [
             'username' => $request->username,

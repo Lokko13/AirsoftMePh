@@ -33,6 +33,17 @@
 
         <div id="content-login" class="row">
             <div class="col-md-4 col-md-offset-4 well">
+            @if (session()->has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('flash_message') }}
+                    </div>
+                @endif
+
+                @if (session()->has('error_message'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error_message') }}
+                    </div>
+                @endif
                 <form class="form-vertical" action="{{ route('auth.login') }}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <label class="col-md-12 control-label">Welcome to AirsoftMe.ph</label>
