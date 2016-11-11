@@ -2,6 +2,22 @@
 
 @section('styles')
     <style type="text/css">
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
         #content-login{
             margin-top: 175px;
         }
@@ -16,8 +32,8 @@
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
             <div class="top-right links">
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
             </div>
         @endif
 

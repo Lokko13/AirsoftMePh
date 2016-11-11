@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('login', 'AuthController@getLogin')->name('login');
-Route::get('register', 'AuthController@getRegister')->name('register');
-Route::post('auth/login', 'AuthController@postLogin')->name('auth.login');
-Route::post('auth/register', 'AuthController@postRegister')->name('auth.register');
+Route::group(array('prefix' => 'auth'), function(){
+    Route::group(array('middleware' => 'guest'), function(){
+        Route::get('login', 'AuthController@getLogin')->name('login');
+        Route::get('register', 'AuthController@getRegister')->name('register');
+        Route::post('login', 'AuthController@postLogin')->name('auth.login');
+        Route::post('register', 'AuthController@postRegister')->name('auth.register');
+        Route::get('activation/complete', 'AuthController@completeActivation')->name('auth.activation.complete');
+        Route::get('activation/new/{user_id?}', 'AuthController@getActivation')->name('auth.activation.new');
+    });
+
+    Route::get('logout', 'AuthController@logout')->name('logout');
+});

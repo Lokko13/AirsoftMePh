@@ -1,0 +1,1 @@
+Logged in <a href="{{route('logout')}}">Logout</a>
