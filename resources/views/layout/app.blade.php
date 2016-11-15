@@ -10,6 +10,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
         <!-- Scripts -->
         <script type="text/javascript" src="{{ elixir('js/app.js') }} "></script>
@@ -19,10 +20,30 @@
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ elixir('css/all.css') }}" rel="stylesheet" type="text/css">
         @yield('styles')
+
+        
+
+      
         
     </head>
     <body>
+    <!-- Styles -->
+            <div id = "container">
+            <div id = "headerbg">
+
+                <img src="/headerbg.jpg" style="width:100%;height:79px;">
+                </div>
+           </div>
+           <div id = "headerbg">
+                <img src="/navbar.png" style="width:100%;height:50px;">
+           </div>
+
+           <div id="mainbg">
+                <img src="/mbg.jpg" style="width:100%;height:1050px;">
+           </div>
+
         @yield('body')
+
 
         @yield('footer-scripts')
     </body>
