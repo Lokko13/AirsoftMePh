@@ -29,17 +29,27 @@
     <body>
     <!-- Styles -->
             <div id = "container">
-            <div id = "headerbg">
+                <div id = "headerbg">
 
-                <img src="/headerbg.jpg" style="width:100%;height:79px;">
+                    <img src="/headerbg.jpg" style="width:100%;height:100px;">
+                    
                 </div>
-           </div>
-           <div id = "headerbg">
-                <img src="/navbar.png" style="width:100%;height:50px;">
-           </div>
 
-           <div id="mainbg">
+                <div id = "header">
+                    <div id= "logo">  <!-- PALAGAY UPPER LEFT PART -->
+                       <a href="http://www.airsoftme.ph/"><img src="/title.png" style="width:50%;height:50px;" >
+                       </a>
+                    </div>
+                </div>
+           
+           
+                <div id = "navbarbg">
+                    <img src="/navbar.png" style="width:100%;height:50px;">
+                </div>
+
+                <div id="mainbg">
                 <img src="/mbg.jpg" style="width:100%;height:1050px;">
+                </div>
            </div>
 
         @yield('body')

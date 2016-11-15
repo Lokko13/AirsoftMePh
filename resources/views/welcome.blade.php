@@ -11,6 +11,36 @@
             margin: 0;
         }
 
+        .container .header {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 70px; 
+            background: rgba( 10, 110, 190, 0.8 ); 
+            overflow: hidden;
+        }
+
+
+        .container .header .image {
+            background: url("../images/icon64.png") no-repeat;
+            float: left;
+            display: inline-block;
+            width: 65px;
+            border:2px solid green;
+        }
+
+        .container .header .text {
+            float: left;
+            display: inline-block;
+            vertical-align: bottom;
+            font-family: sans-serif;
+            font-size: x-large;
+            border:2px solid blue;
+        }
+
         .full-height {
             height: 100vh;
         }
