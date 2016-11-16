@@ -21,36 +21,54 @@
         <link href="{{ elixir('css/all.css') }}" rel="stylesheet" type="text/css">
         @yield('styles')
 
-        
+        {{-- Temp css --}}
+        <style type="text/css">
+            .navbar {
+                background: url('/headerbg.jpg');
+                border-radius: 0px !important;
+                border: 1px black solid;
+            }
 
-      
-        
+            .nav li a{
+                color: #bbb !important;
+                font-weight: 700 !important;
+            }
+
+            .navbar-header .navbar-brand {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        </style>
     </head>
     <body>
-    <!-- Styles -->
-            <div id = "container">
-                <div id = "headerbg">
-
-                    <img src="/headerbg.jpg" style="width:100%;height:100px;">
-                    
-                </div>
-
-                <div id = "header">
-                    <div id= "logo">  <!-- PALAGAY UPPER LEFT PART -->
-                       <a href="http://www.airsoftme.ph/"><img src="/title.png" style="width:50%;height:50px;" >
-                       </a>
+        <div id = "container">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ route('home') }}">
+                            <img src="title.png" style="height:30px;">
+                        </a>
                     </div>
-                </div>
-           
-           
-                <div id = "navbarbg">
-                    <img src="/navbar.png" style="width:100%;height:50px;">
-                </div>
-
-                <div id="mainbg">
-                <img src="/mbg.jpg" style="width:100%;height:1050px;">
-                </div>
-           </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Airsoft Store</a></li>
+                            <li><a href="#">Game Sites</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Post</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Search</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+       </div>
 
         @yield('body')
 
